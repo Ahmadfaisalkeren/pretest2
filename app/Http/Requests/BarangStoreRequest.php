@@ -23,7 +23,7 @@ class BarangStoreRequest extends FormRequest
     {
         return [
             'kd_kategori' => 'required',
-            'kd_satuan' => 'required',
+            'kd_satuan' => 'required|string|in:lt,kg,m',
             'nama' => 'required|string|unique:tabel_barang,nama|min:2|max:20',
             'jumlah' => 'required|numeric'
         ];
@@ -39,6 +39,7 @@ class BarangStoreRequest extends FormRequest
         return [
             'kd_kategori.required' => 'Kode Kategori harus diisi.',
             'kd_satuan.required' => 'Kode Satuan harus diisi.',
+            'kd_satuan.in' => 'Masukkan satuan antara kg, lt atau m.',
             'nama.required' => 'Nama Barang harus diisi.',
             'nama.string' => 'Nama Barang harus berupa teks.',
             'nama.unique' => 'Nama Barang sudah ada.',
